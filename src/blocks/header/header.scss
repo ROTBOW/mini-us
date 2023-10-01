@@ -4,16 +4,45 @@
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
-    margin-left: 5rem;
     color: $main-color;
     font-size: 2rem;
 
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 
     .header-line {
         margin-top: 0.5rem;
         background-color: $second-color;
         width: 90%;
         height: 0.2rem;
-        border-radius: 10%;
     }
 }
+
+@media only screen and (min-width: 700px) {
+    // computer screens
+    .header-main {
+        margin-left: 5rem;
+
+        a {
+            color: $main-color;
+            text-decoration: none;
+            transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+            box-shadow: inset 0 0 0 0 #54b3d6;
+            margin: 0 -.25rem;
+            padding: 0 .25rem;
+
+            &:hover {
+                color: white;
+                box-shadow: inset 150px 0 0 0 #54b3d6;
+            }
+        }
+    }
+};
+
+@media only screen and (max-width: 701px) {
+    // phone screens
+    .header-main {
+        margin-left: 1.5rem;
+    }
+};

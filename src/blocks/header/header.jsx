@@ -6,7 +6,9 @@ const Header = () => {
 
     return (
         <div className="header-main">
-            Created by Josiah Leon
+            <div>
+                Created by <a href="https://github.com/ROTBOW">Josiah Leon</a>
+            </div>
             <div className="header-line"/>
         </div>
     )
