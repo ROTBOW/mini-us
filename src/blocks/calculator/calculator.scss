@@ -1,0 +1,6 @@
+@import '../../styles/block_mixin.scss';
+
+.calc {
+    @include default-block;
+    
+}

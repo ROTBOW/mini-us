@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <Header/>
-      <div className='main-container'>
+      <div className='container-main'>
         <Calculator/>
       </div>
     </div>

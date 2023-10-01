@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './calculator.scss';
 
 
 const Calculator = () => {
 
     return (
-        <div>
+        <div className="calc">
             this is the calculator!
         </div>
     )
