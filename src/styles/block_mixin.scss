@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+@mixin default-block {
+    background-color: $second-color;
+    
+    width: 15rem;
+    height: 16rem;
+    
+    
+    border-radius: 15%;
+    padding: 0.5rem;
+};
