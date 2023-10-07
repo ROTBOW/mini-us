@@ -49,7 +49,7 @@ const Calculator = () => {
             return
         }
 
-        if ('123456789'.includes(targetValue)) {
+        if ('1234567890'.includes(targetValue)) {
             add_num(targetValue)
         } else {
             console.log(targetValue);
@@ -62,25 +62,28 @@ const Calculator = () => {
             <div className="calc-body" onClick={handleClick}>
                 <div className="calc-res">{res}</div>
 
-                <button className="calc-c" value='clear'>C</button>
-                <button className="calc-plus" value='+'>+</button>
-                <button className="calc-minus" value="-">-</button>
-                <button className="calc-times" value="*">*</button>
+                <button className="calc-row0" value='clear'>C</button>
                 <button className="calc-div" value="/">/</button>
-                <button className="calc-equals" value="=">=</button>
-                <button className="calc-zero" value="0">0</button>
 
-                <button className="calc-num-row1" value="7">7</button>
-                <button className="calc-num-row1" value="8">8</button>
-                <button className="calc-num-row1" value="9">9</button>
+                <button className="calc-row1" value="7">7</button>
+                <button className="calc-row1" value="8">8</button>
+                <button className="calc-row1" value="9">9</button>
+                <button className="calc-row1" value="*">*</button>
 
-                <button className="calc-num-row2" value="4">4</button>
-                <button className="calc-num-row2" value="5">5</button>
-                <button className="calc-num-row2" value="6">6</button>
+                <button className="calc-row2" value="4">4</button>
+                <button className="calc-row2" value="5">5</button>
+                <button className="calc-row2" value="6">6</button>
+                <button className="calc-row2" value="-">-</button>
 
-                <button className="calc-num-row3" value="1">1</button>
-                <button className="calc-num-row3" value="2">2</button>
-                <button className="calc-num-row3" value="3">3</button>
+                <button className="calc-row3" value="1">1</button>
+                <button className="calc-row3" value="2">2</button>
+                <button className="calc-row3" value="3">3</button>
+                <button className="calc-row3" value='+'>+</button>
+
+                <button className="calc-row4" value="0">0</button>
+                <button className="calc-row4" value=".">.</button>
+                <button className="calc-row4" value="±">±</button>
+                <button className="calc-row4" value="=">=</button>
             </div>
         </div>
     )
