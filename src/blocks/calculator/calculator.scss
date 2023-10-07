@@ -45,6 +45,9 @@
         background-color: $second-color-dark;
         color: $main-color;
         font-size: 26px;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
     }
 
     .calc-c {
@@ -75,6 +78,10 @@
     .calc-equals {
         grid-row: 2;
         grid-column: 3;
+    }
+
+    .calc-zero {
+        grid-row: 2;
     }
 
     .calc-num-row1 {

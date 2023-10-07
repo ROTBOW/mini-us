@@ -4,14 +4,57 @@ import './calculator.scss';
 
 const Calculator = () => {
 
-    const [res, setRes] = useState(0);
-    const [val1, setVal1] = useState(0);
-    const [val2, setVal2] = useState(0);
+    const [res, setRes] = useState('0');
+    const [val1, setVal1] = useState('0');
+    const [val2, setVal2] = useState('0');
+    const [whichVal, setWhichVal] = useState(true);
+
+    /**
+     * The function "clear" resets the values of "res", "val1", "val2", and "whichVal" to '0' and true
+     * respectively.
+     */
+    const clear = () => {
+        setRes('0');
+        setVal1('0');
+        setVal2('0');
+        setWhichVal(true);
+    };
+
+    /**
+     * The function `add_num` takes a number as input and updates a value in state by adding the input
+     * number to it.
+     */
+    const add_num = (num) => {
+        let setVal = whichVal ? setVal1 : setVal2;
+        setVal(val => {
+            val = val+num
+            val = Number(val)
+            val = String(val)
+
+            setRes(val)
+            return val
+        })
+    };
 
     const handleClick = (e) => {
         // console.log(e.target.value);
         // perfect... I can make a func to handle all clicks with this.
         // Thank you propagation
+        let targetValue = e.target.value;
+
+        if (targetValue === 'clear') {
+            clear()
+            return
+        } else if (targetValue === undefined) {
+            return
+        }
+
+        if ('123456789'.includes(targetValue)) {
+            add_num(targetValue)
+        } else {
+            console.log(targetValue);
+        }
+
     }
 
     return (
@@ -25,6 +68,7 @@ const Calculator = () => {
                 <button className="calc-times" value="*">*</button>
                 <button className="calc-div" value="/">/</button>
                 <button className="calc-equals" value="=">=</button>
+                <button className="calc-zero" value="0">0</button>
 
                 <button className="calc-num-row1" value="7">7</button>
                 <button className="calc-num-row1" value="8">8</button>
