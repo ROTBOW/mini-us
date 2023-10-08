@@ -3,7 +3,7 @@
 
 .calc {
     @include default-block;
-    width: 20rem;
+    width: 19rem;
     height: 22rem;
 }
 
@@ -49,6 +49,7 @@
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
+        transition: all 500ms;
     }
 
     .calc-div {
@@ -74,5 +75,11 @@
 
     .calc-row4 {
         grid-row: 6;
+    }
+
+    .active {
+        color: rgb(0, 255, 0);
+        background: rgb(20,20,20);
+        font-size: 30px;
     }
 }
