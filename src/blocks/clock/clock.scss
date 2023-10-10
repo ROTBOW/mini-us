@@ -1,0 +1,6 @@
+@import '../../styles/block_mixin.scss';
+@import '../../styles/variables.scss';
+
+.clock-container {
+    @include default-block;
+}
