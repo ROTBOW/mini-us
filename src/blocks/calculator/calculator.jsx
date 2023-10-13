@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './calculator.scss';
 
 
@@ -7,7 +7,7 @@ const Calculator = () => {
     const [res, setRes] = useState('0');
     const [val1, setVal1] = useState('0');
     const [val2, setVal2] = useState('0');
-    const [whichVal, setWhichVal] = useState(true);
+    const [whichVal, setWhichVal] = useState('');
 
     /**
      * The function "clear" resets the values of "res", "val1", "val2", and "whichVal" to '0' and true
@@ -47,25 +47,53 @@ const Calculator = () => {
         });
     };
 
-    /* The `solve` function is responsible for evaluating the mathematical expression based on the
-    values of `val1`, `whichVal`, and `val2`. It uses the `eval` function to perform the
-    evaluation and updates the result (`res`) using the `setRes` function. */
-    const solve = () => {
-        if (whichVal === '') { return null }
-        setRes(eval(val1+whichVal+val2))
+    /**
+     * The function "backspace" is used to delete the last digit of a number and update the result
+     * accordingly.
+     */
+    const backspace = () => {
+        let setVal = whichVal === '' ? setVal1 : setVal2;
+
+        setVal(val => {
+            setRes(Math.floor(val/10));
+            return Math.floor(val/10);
+        });
     };
+
+
+    /**
+     * The function "solve" evaluates an expression using the values "val1", "val2", and "whichVal",
+     * updates "val1" and "val2" accordingly, and returns the result.
+     * @returns The function `solve` returns the result of the evaluation of `val1 + whichVal + val2`.
+     */
+    const solve = () => {
+        if (whichVal === '') { return null };
+        setRes(() => {
+            let val = eval(val1+whichVal+val2);
+            
+            setVal1(val);
+            setVal2('0');
+
+            return eval(val);
+        });
+    };
+
 
     /**
      * The handleClick function handles different button clicks and performs corresponding actions
      * based on the clicked button value.
-     * @returns nothing (undefined) in most cases. However, if the targetValue is 'clear', the function
-     * calls the clear() function and then returns.
+     * @returns nothing (undefined) in most cases. However, if the targetValue is 'clear' or
+     * 'backspace', the function will call the clear() or backspace() functions respectively and then
+     * return.
      */
     const handleClick = (e) => {
         let targetValue = e.target.value;
 
         if (targetValue === 'clear') {
             clear()
+            return
+        } else if (targetValue === 'backspace') {
+            backspace()
             return
         } else if (targetValue === undefined) {
             return
@@ -89,6 +117,7 @@ const Calculator = () => {
                 <div className="calc-res">{res}</div>
 
                 <button className="calc-row0" value='clear'>C</button>
+                <button className="calc-row0" value='backspace'>🠔</button>
                 <button className={`calc-div ${whichVal === '/' ? 'active' : ''}`} value="/">/</button>
 
                 <button className="calc-row1" value="7">7</button>

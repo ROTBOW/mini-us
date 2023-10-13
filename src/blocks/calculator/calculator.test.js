@@ -48,9 +48,10 @@ it('Performs multiplication correctly', () => {
     fireEvent.click(numButton1);
     fireEvent.click(multiplyButton);
     fireEvent.click(numButton2);
+    fireEvent.click(numButton2);
     fireEvent.click(equalsButton);
 
-    expect(screen.getByText('6'));
+    expect(screen.findByText('66'));
 });
 
 
@@ -62,11 +63,12 @@ it('Performs division correctly', () => {
     const equalsButton = screen.getByText('=');
 
     fireEvent.click(numButton1);
+    fireEvent.click(numButton1);
     fireEvent.click(divideButton);
     fireEvent.click(numButton2);
     fireEvent.click(equalsButton);
 
-    expect(screen.getByText('2'));
+    expect(screen.findByText('22'));
 });
 
 it('Handles division by zero', () => {
@@ -92,11 +94,12 @@ it('Performs addition correctly', () => {
     const equalsButton = screen.getByText('=');
 
     fireEvent.click(numButton1);
+    fireEvent.click(numButton1);
     fireEvent.click(addButton);
     fireEvent.click(numButton2);
     fireEvent.click(equalsButton);
 
-    expect(screen.getByText('5'));
+    expect(screen.findByText('25'));
 });
 
 it('Performs subtraction correctly', () => {
@@ -106,10 +109,55 @@ it('Performs subtraction correctly', () => {
     const subtractButton = screen.getByText('-');
     const equalsButton = screen.getByText('=');
 
+    fireEvent.click(numButton2);
     fireEvent.click(numButton1);
     fireEvent.click(subtractButton);
     fireEvent.click(numButton2);
     fireEvent.click(equalsButton);
 
-    expect(screen.getByText('3'));
+    expect(screen.findByText('23'));
 });
+
+it('Confirms the backspace function', () => {
+    render(<Calculator/>);
+    const button6 = screen.getByText('6');
+    const button7 = screen.getByText('7');
+    const button8 = screen.getByText('8');
+    const backspaceButton = screen.getByText('🠔');
+
+    fireEvent.click(button6);
+    fireEvent.click(button7);
+    fireEvent.click(button8);
+    fireEvent.click(backspaceButton);
+
+    expect(screen.findByText('67'));
+});
+
+it('Performs chained calculations correctly', () => {
+    render(<Calculator/>);
+    const numButton1 = screen.getByText('2');
+    const numButton2 = screen.getByText('3');
+    const addButton = screen.getByText('+');
+    const equalsButton = screen.getByText('=');
+    const subtractButton = screen.getByText('-');
+    const multiplyButton = screen.getByText('*');
+    const divideButton = screen.getByText('/');
+    
+    fireEvent.click(numButton1);
+    fireEvent.click(numButton1);
+    fireEvent.click(addButton);
+    fireEvent.click(numButton2);
+    fireEvent.click(equalsButton);
+    fireEvent.click(subtractButton);
+    fireEvent.click(numButton1);
+    fireEvent.click(numButton1);
+    fireEvent.click(multiplyButton);
+    fireEvent.click(numButton2);
+    fireEvent.click(equalsButton);
+    fireEvent.click(divideButton);
+    fireEvent.click(numButton2);
+    fireEvent.click(equalsButton);
+
+    expect(screen.findByText('5.5'));
+});
+
