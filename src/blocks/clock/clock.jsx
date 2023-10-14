@@ -44,9 +44,9 @@ const Clock = () => {
                 <div className='clock-face'>
                     {hourMarkers()}
                     <div className='clock-digital'>{curTime}</div>
-                    <div className={`clock-hand clock-second ${[0, 360].includes(secDeg) ? "disable" : ""}`} style={{rotate: `${secDeg}deg`}}/>
-                    <div className={`clock-hand clock-minute ${[0, 360].includes(minDeg) ? "disable" : ""}`} style={{rotate: `${minDeg}deg`}}/>
-                    <div className={`clock-hand clock-hour ${[0, 360].includes(hourDeg) ? "disable" : ""}`} style={{rotate: `${hourDeg}deg`}}/>
+                    <div className={`clock-hand clock-second ${[0, 360].includes(secDeg) ? "disable" : ""}`} style={{rotate: `${secDeg}deg`}} data-testid='clock-second'/>
+                    <div className={`clock-hand clock-minute ${[0, 360].includes(minDeg) ? "disable" : ""}`} style={{rotate: `${minDeg}deg`}} data-testid='clock-minute'/>
+                    <div className={`clock-hand clock-hour ${[0, 360].includes(hourDeg) ? "disable" : ""}`} style={{rotate: `${hourDeg}deg`}} data-testid='clock-hour'/>
 
                     <div className='clock-cap'/>
                 </div>
