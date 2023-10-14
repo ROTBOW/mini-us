@@ -1,6 +1,10 @@
 @import '../../styles/block_mixin.scss';
 @import '../../styles/variables.scss';
 
+.disable {
+    transition: none !important;
+}
+
 .clock-container {
     @include default-block;
     display: flex;
@@ -38,6 +42,7 @@
     padding: 0.5rem;
     bottom: 3rem;
     border-radius: 25%;
+    border: $second-color 3px groove;
     box-shadow: -1px 2px 5px 1px $second-color-dark;
     z-index: 0;
     width: 5.5rem;
@@ -65,28 +70,29 @@
     position: absolute;
     transform-origin: bottom center;
     z-index: 1;
+    bottom: 50%;
 
     transition: 1s all;
     // will use the rotate to move the clock to where it needs to be
-    rotate: 15deg;
 }
 
 .clock-second {
     background-color: red;
     width: 1%;
     height: 45%;
-    bottom: 50%;
 };
 
 .clock-minute {
-    color: blue;
+    background-color: $second-color-dark;
+    height: 40%;
+    width: 1%;
+    
 }
 
 .clock-hour {
-    position: absolute;
-    width: 5%;
-    height: 50%;
-    background-color: black;
+    width: 1%;
+    height: 33%;
+    background-color: $main-color-dark;
 }
 
 .clock-cap {
