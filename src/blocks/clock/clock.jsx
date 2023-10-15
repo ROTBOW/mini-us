@@ -39,7 +39,7 @@ const Clock = () => {
     };
 
     return (
-        <div className='clock-container'>
+        <div className='clock-block'>
             <div className='clock-back-block'>
                 <div className='clock-face'>
                     {hourMarkers()}

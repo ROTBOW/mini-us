@@ -1,7 +1,7 @@
 @import '../../styles/block_mixin.scss';
 @import '../../styles/variables.scss';
 
-.calc {
+.calc-block {
     @include default-block;
     width: 19rem;
     height: 22rem;

@@ -130,7 +130,7 @@ const Calculator = () => {
     }
 
     return (
-        <div className="calc">
+        <div className="calc-block">
             <div className="calc-body" onClick={handleClick}>
                 <div className="calc-res">{res}</div>
 
