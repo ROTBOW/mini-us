@@ -27,7 +27,7 @@ const Header = () => {
     useEffect(() => {
         const emojiInterval = setInterval(() => {
             setCurEmoji(randomEmoji());
-        }, 5000);
+        }, 4000);
 
         return () => clearInterval(emojiInterval);
     }, []);
@@ -35,8 +35,8 @@ const Header = () => {
     return (
         <div className="header-main">
             <div><b>Mini-us</b> | A Collection Of Blocks</div>
-            <div>
-                Created with {curEmoji} by <a href="https://github.com/ROTBOW">Josiah Leon</a>
+            <div style={{display: 'flex'}}>
+                Created with <div id='emoji-char'>{curEmoji}</div> by <a href="https://github.com/ROTBOW">Josiah Leon</a>
             </div>
             <div className="header-line"/>
         </div>
