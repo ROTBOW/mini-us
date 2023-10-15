@@ -69,7 +69,25 @@ const Calculator = () => {
     const solve = () => {
         if (whichVal === '') { return null };
         setRes(() => {
-            let val = eval(val1+whichVal+val2);
+            let val;
+
+            switch(whichVal) {
+                case '+':
+                    val = Number(val1) + Number(val2)
+                    break;
+
+                case '-':
+                    val = Number(val1) - Number(val2)
+                    break;
+
+                case '*':
+                    val = Number(val1) * Number(val2)
+                    break;
+
+                case '/':
+                    val = Number(val1) / Number(val2)
+                    break;
+            }
             
             setVal1(val);
             setVal2('0');
@@ -117,7 +135,7 @@ const Calculator = () => {
                 <div className="calc-res">{res}</div>
 
                 <button className="calc-row0" value='clear'>C</button>
-                <button className="calc-row0" value='backspace'>🠔</button>
+                <button className="calc-row0" value='backspace'>←</button>
                 <button className={`calc-div ${whichVal === '/' ? 'active' : ''}`} value="/">/</button>
 
                 <button className="calc-row1" value="7">7</button>

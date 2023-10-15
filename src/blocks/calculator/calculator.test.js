@@ -123,7 +123,7 @@ it('Confirms the backspace function', () => {
     const button6 = screen.getByText('6');
     const button7 = screen.getByText('7');
     const button8 = screen.getByText('8');
-    const backspaceButton = screen.getByText('🠔');
+    const backspaceButton = screen.getByText('←');
 
     fireEvent.click(button6);
     fireEvent.click(button7);
@@ -161,3 +161,53 @@ it('Performs chained calculations correctly', () => {
     expect(screen.findByText('5.5'));
 });
 
+it('can backspace a negative number', () => {
+    render(<Calculator/>);
+    const button6 = screen.getByText('6');
+    const button7 = screen.getByText('7');
+    const button8 = screen.getByText('8');
+    const backspaceButton = screen.getByText('←');
+    const flipPolarityButton = screen.getByText('±');
+    
+    fireEvent.click(flipPolarityButton);
+    fireEvent.click(button6);
+    fireEvent.click(button7);
+    fireEvent.click(button8);
+    fireEvent.click(backspaceButton);
+    
+    expect(screen.findByText('-67'));
+});
+
+it('can minus a negative number left side', () => {
+    render(<Calculator/>);
+    const button6 = screen.getByText('6');
+    const button7 = screen.getByText('7');
+    const subtractButton = screen.getByText('-');
+    const equalsButton = screen.getByText('=');
+    const flipPolarityButton = screen.getByText('±');
+    
+    fireEvent.click(button6);
+    fireEvent.click(flipPolarityButton);
+    fireEvent.click(subtractButton);
+    fireEvent.click(button7);
+    fireEvent.click(equalsButton);
+    
+    expect(screen.findByText('-13'));
+});
+
+it('can minus a negative number right side', () => {
+    render(<Calculator/>);
+    const button6 = screen.getByText('6');
+    const button7 = screen.getByText('7');
+    const subtractButton = screen.getByText('-');
+    const equalsButton = screen.getByText('=');
+    const flipPolarityButton = screen.getByText('±');
+    
+    fireEvent.click(button6);
+    fireEvent.click(subtractButton);
+    fireEvent.click(button7);
+    fireEvent.click(flipPolarityButton);
+    fireEvent.click(equalsButton);
+    
+    expect(screen.findByText('13'));
+});
