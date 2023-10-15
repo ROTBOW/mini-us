@@ -37,7 +37,7 @@
     position: absolute;
     background-color: black;
     color: $terminal-green;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: $terminal-font;
     font-size: 20px;
     padding: 0.5rem;
     bottom: 3rem;

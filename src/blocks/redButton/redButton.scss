@@ -1,0 +1,55 @@
+@import "../../styles/block_mixin.scss";
+@import "../../styles/variables.scss";
+
+.redbutton-block {
+    @include default-block;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.redbutton-base {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $second-color-dark;
+    
+    button {
+        box-shadow: inset 0px -20px 3px 0px rgb(128, 0, 0);
+        border-radius: 50%;
+        width: 95%;
+        height: 95%;
+        background-color: red;
+        border: none;
+        border-width: 8px;
+        cursor: pointer;
+        transform: translateY(-4px);
+        transition: all 100ms;
+        
+        &:active {
+            transform: translateY(0px);
+            box-shadow: inset 0px -5px 3px 0px rgb(128, 0, 0);
+        }
+    }
+
+
+}
+
+.redbutton-counter {
+    background-color: black;
+    color: $terminal-green;
+    font-family: $terminal-font;
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 7rem;
+
+}
+
+.redbutton-actived {
+    transform: translateY(0px) !important;
+    box-shadow: inset 0px -5px 3px 0px rgb(128, 0, 0) !important;
+}

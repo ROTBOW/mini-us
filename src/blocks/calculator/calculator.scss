@@ -34,7 +34,7 @@
 
         color: $terminal-green;
         background-color: black;
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        font-family: $terminal-font;
         display: flex;
         align-items: center;
     }
