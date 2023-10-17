@@ -38,14 +38,17 @@
     background-color: black;
     color: $terminal-green;
     font-family: $terminal-font;
-    font-size: 20px;
+    font-size: 26px;
     padding: 0.5rem;
     bottom: 3rem;
     border-radius: 25%;
     border: $second-color 3px groove;
     box-shadow: -1px 2px 5px 1px $second-color-dark;
     z-index: 0;
-    width: 5.5rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
