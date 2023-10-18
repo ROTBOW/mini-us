@@ -5,6 +5,7 @@ import Header from './blocks/header/header';
 import Calculator from './blocks/calculator/calculator';
 import Clock from './blocks/clock/clock';
 import RedButton from './blocks/redButton/redButton';
+import Notes from './blocks/notes/notes';
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
         <Calculator/>
         <Clock/>
         <RedButton/>
+        <Notes/>
       </div>
     </div>
   )

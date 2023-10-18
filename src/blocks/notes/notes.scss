@@ -1,0 +1,43 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.notes-block {
+    @include default-block;
+    flex-direction: column;
+    position: relative;
+
+    .notes-header-buttons {
+        background-color: $second-color;
+
+        position: absolute;
+        top: 0.5rem;
+        width: 90%;
+
+        display: flex;
+        justify-content: space-evenly;
+
+        border-radius: 15% 15% 0 0;
+
+        button {
+            background-color: $second-color;
+            color: whitesmoke;
+
+            border: none;
+            border-bottom: 2px $second-color-dark solid;
+            border-radius: 15px 15px 0 0;
+            padding: 0 1.5rem 0 1.5rem;
+
+            font-size: 28px;
+            text-shadow: darkblue 1px 0 5px;
+
+            cursor: pointer;
+            transition: all 500ms;
+
+            &.notes-active {
+                background-color: $second-color-dark;
+                text-shadow: darkblue 1px 0 10px;
+            }
+        }
+    }
+
+}
