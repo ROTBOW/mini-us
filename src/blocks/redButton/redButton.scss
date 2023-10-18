@@ -1,4 +1,4 @@
-@import "../../styles/block_mixin.scss";
+@import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
 .redbutton-block {
@@ -17,12 +17,14 @@
     justify-content: center;
     align-items: center;
     background-color: $second-color-dark;
+    position: relative;
     
     button {
         box-shadow: inset 0px -20px 3px 0px rgb(128, 0, 0);
         border-radius: 50%;
         width: 95%;
         height: 95%;
+        opacity: 1;
         background-color: red;
         border: none;
         border-width: 8px;
@@ -36,20 +38,47 @@
         }
     }
 
+    div {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        border-radius: 50%;
+        border: 4px $second-color-dark inset;
+        background-image: url('../../assets/images/silly_goose.png');
+        background-size: cover;
+        background-position: 50px 25px;
+        background-repeat: no-repeat;
+    }
+
 
 }
 
 .redbutton-counter {
-    background-color: black;
-    color: $terminal-green;
-    font-family: $terminal-font;
+    @include terminal;
     padding: 0.5rem;
     border-radius: 10px;
-    width: 7rem;
-
+    width: 10rem;
+    font-size: 28px;
+    text-align: center;
 }
 
 .redbutton-actived {
     transform: translateY(0px) !important;
     box-shadow: inset 0px -5px 3px 0px rgb(128, 0, 0) !important;
+    cursor: default !important;
+}
+
+@keyframes poof {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.redbutton-poof {
+    animation: 4s ease-out 0s 1 poof;
+    animation-fill-mode: forwards;
+    opacity: 0;
 }
