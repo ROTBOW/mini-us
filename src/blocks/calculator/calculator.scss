@@ -3,8 +3,6 @@
 
 .calc-block {
     @include default-block;
-    width: 19rem;
-    height: 22rem;
 }
 
 .calc-body {
@@ -12,6 +10,7 @@
     font-size: 28px;
     border-radius: 15px;
     height: 90%;
+    width: 75%;
     margin: 1rem;
     padding-bottom: 0.5rem;
     box-shadow: -5px 5px 10px 1px $second-color-dark;
@@ -39,8 +38,8 @@
 
     button {
         border-radius: 25px;
-        width: 2.8rem;
-        height: 2.8rem;
+        width: 2.5rem;
+        height: 2.5rem;
         background-color: $second-color-dark;
         color: $main-color;
         font-size: 26px;
