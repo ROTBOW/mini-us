@@ -1,4 +1,4 @@
-@import '../../styles/block_mixin.scss';
+@import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
 .calc-block {
@@ -23,6 +23,7 @@
     grid-template-rows: repeat(6, 1fr);
 
     .calc-res {
+        @include terminal;
         grid-column-start: 1;
         grid-column-end: 5;
 
@@ -32,9 +33,6 @@
         margin: 0.5rem 0 0 0;
         padding-left: 0.5rem;
 
-        color: $terminal-green;
-        background-color: black;
-        font-family: $terminal-font;
         display: flex;
         align-items: center;
     }

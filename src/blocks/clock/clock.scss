@@ -1,4 +1,4 @@
-@import '../../styles/block_mixin.scss';
+@import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
 .disable {
@@ -34,10 +34,8 @@
 }
 
 .clock-digital {
+    @include terminal;
     position: absolute;
-    background-color: black;
-    color: $terminal-green;
-    font-family: $terminal-font;
     font-size: 26px;
     padding: 0.5rem;
     bottom: 3rem;
