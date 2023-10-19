@@ -87,11 +87,9 @@ const Notes = () => {
             localStorage.removeItem(currNote);
             delete notes[currNote];
 
-            for (let n in notes) {
-                setCurrNote(n);
-                setCurrText(notes[n]);
-                break;
-            };
+            let lastNote = Object.keys(notes).sort()[Object.keys(notes).length-1]
+            setCurrNote(lastNote);
+            setCurrText(notes[lastNote]);
         }
     };
 
