@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from "react";
 import './notes.scss';
 
-const getNoteCount = () => {
-    let count = 0;
+const getNextIdx = () => {
+    let seen = new Set();
 
     for (let i in localStorage) {
         if (i.startsWith('notes')) {
-            count++;
+            seen.add(Number(i.split('-')[1]))
         }
     }
 
-    return count;
+    let idx = 0;
+    while (seen.has(idx)) {
+        idx++;
+    }
+
+    return idx;
 }
 
 const grabNotes = () => {
@@ -25,52 +30,43 @@ const grabNotes = () => {
 };
 
 const Notes = () => {
-    const [mode, setMode] = useState('writer');
     const [currNote, setCurrNote] = useState('notes-0');
-    const [writerText, setWriterText] = useState('');
+    const [currText, setCurrText] = useState('');
     const [notes, setNotes] = useState({});
-
-    const handleModeChange = (e) => {
-        e.stopPropagation();
-        if (e.target.value === 'reader' && Object.keys(notes).length === 0) { return };
-        setMode(e.target.value);
-    };
 
     const handleNewNote = (e) => {
         e.stopPropagation();
         e.preventDefault();
         
-        let count = getNoteCount()
-        localStorage.setItem(`notes-${count}`, writerText);
-        setMode(() => {
-            setNotes(grabNotes());
-            setCurrNote(`notes-${count}`);
-            setWriterText('');
-            return 'reader'
-        })
+        let idx = getNextIdx();
+        localStorage.setItem(`notes-${idx}`, '');
+        setNotes(grabNotes());
+        setCurrNote(`notes-${idx}`);
 
     };
 
     useEffect(() => {
-        setNotes(grabNotes());
-    }, []);
+        let n = grabNotes();
+        if (Object.keys(n) === 0) {
+            n['notes-0'] = '';
+            localStorage.setItem('notes-0', '');
+        };
 
-    const writer = (
-        <div className="notes-writer">
-            <textarea defaultValue={writerText} onChange={e => setWriterText(e.target.value)} />
-            <button onClick={handleNewNote}>Create Note</button>
-        </div>
-    );
+        setNotes(grabNotes());
+        setCurrText(notes[currNote]);
+    }, [currNote]);
+
 
     const createReaderIdx = () => {
         let idxs = [];
         let idx = 1;
-        
-        for (let i in notes) {
+        let orderedNotes = Object.keys(notes).sort()
+
+        for (let i of orderedNotes) {
             idxs.push(
                 <li
                     key={i}
-                    onClick={()=>(setCurrNote(i))}
+                    onClick={()=>{setCurrNote(i)}}
                     className={currNote === i ? 'notes-active' : ''}
                     >
                     {idx}
@@ -82,37 +78,44 @@ const Notes = () => {
         return idxs;
     };
 
-    const reader = (
-        <div className="notes-reader">
-            <ol>
-                {createReaderIdx()}
-            </ol>
-            <div>
-                {notes[currNote]}
-            </div>
-        </div>
-    );
+    const handleNoteDelete = (e) => {
+        e.stopPropagation();
+        if (Object.keys(notes).length === 1) {
+            setCurrText('');
+            localStorage.setItem(currNote, '');
+        } else {
+            localStorage.removeItem(currNote);
+            delete notes[currNote];
 
+            for (let n in notes) {
+                setCurrNote(n);
+                setCurrText(notes[n]);
+                break;
+            };
+        }
+    };
+
+    const handleNoteChange = (e) => {
+        e.stopPropagation();
+        
+        setCurrText(() => {
+            localStorage.setItem(currNote, e.target.value);
+            return e.target.value
+        });
+    };
+    
     return (
         <div className="notes-block">
-            <div className="notes-header-buttons">
-                <button
-                    onClick={handleModeChange}
-                    value="writer"
-                    className={mode === 'writer' ? 'notes-active' : ''}
-                >writer</button>
-                <button
-                    onClick={handleModeChange}
-                    value="reader"
-                    className={
-                        `
-                            ${mode === 'reader' ? 'notes-active' : ''}
-                            ${Object.keys(notes).length === 0 ? 'notes-deactivate' : ''}
-                        `
-                    }
-                >reader</button>
+            <div className="notes-reader">
+                <ol>
+                    {createReaderIdx()}
+                </ol>
+                <textarea className="notes-reader-box" onChange={handleNoteChange} value={currText}/>
+                <div className="notes-reader-options">
+                    <button><span className="material-symbols-outlined" onClick={handleNoteDelete}>delete</span></button>
+                    <button><span className="material-symbols-outlined" onClick={handleNewNote}>add_circle</span></button>
+                </div>
             </div>
-            {mode === 'writer' ? writer : reader}
         </div>
     );
 };

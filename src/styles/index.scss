@@ -3,7 +3,6 @@
    License: none (public domain)
 */
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-// @import url('./../assets/fonts/DigitalNormal-xO6j.otf');
 
 @font-face {
 	font-family: 'digi-normal';
@@ -59,3 +58,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.material-symbols-outlined {
+	font-variation-settings:
+	'FILL' 0,
+	'wght' 400,
+	'GRAD' 0,
+	'opsz' 24
+  }
