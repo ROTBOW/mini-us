@@ -3,7 +3,7 @@
 
 .notes-block {
     @include default-block;
-    flex-direction: column;
+    // flex-direction: column;
     position: relative;
 
     .notes-header-buttons {
@@ -27,7 +27,8 @@
             border-radius: 15px 15px 0 0;
             padding: 0 1.5rem 0 1.5rem;
 
-            font-size: 28px;
+            font-size: 26px;
+            font-family: cursive;
             text-shadow: darkblue 1px 0 5px;
 
             cursor: pointer;
@@ -37,7 +38,106 @@
                 background-color: $second-color-dark;
                 text-shadow: darkblue 1px 0 10px;
             }
+
+            &.notes-deactivate {
+                cursor: not-allowed;
+                color: darkgrey;
+            }
         }
     }
 
+    .notes-writer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background-color: $second-color;
+
+        width: 85%;
+        height: 85%;
+        margin-top: 2.5rem;
+
+        textarea {
+            box-sizing: border-box;
+            resize: none;
+
+            font-family: cursive;
+            font-size: 18px;
+
+            background-color: whitesmoke;
+
+            width: 100%;
+            height: 90%;
+
+            border-radius: 5px;
+        }
+
+        button {
+            width: fit-content;
+            margin-top: 0.3rem;
+
+            background-color: $second-color-dark;
+
+            color: $main-color;
+            font-family: cursive;
+            font-size: 18px;
+
+        }
+    }
+
+    .notes-reader {
+        display: flex;
+
+        ol {
+            position: absolute;
+            left: 0;
+            top: 4rem;
+            overflow-y: hidden;
+
+            border-radius: 5px;
+
+            margin-left: 1.5rem;
+            height: 70%;
+            
+            background-color: $second-color;
+            box-shadow: inset 0px -121px 90px -75px rgba(113, 92, 52, 0.75);
+
+            li {
+                border: 1px dotted $second-color-dark;
+                border-left: 2px solid $second-color-dark;
+                border-radius: 0 10px 10px 0;
+                padding: 0.5rem;
+                
+                background-color: $second-color;
+                color: whitesmoke;
+
+                font-size: 18px;
+                
+                cursor: pointer;
+                transition: all 500ms;
+                &.notes-active {
+                    background-color: $second-color-dark;
+                    text-shadow: darkblue 1px 0 10px;
+                }
+            }
+        }
+
+        div {
+            position: absolute;
+            top: 4rem;
+            left: 4rem;
+
+            font-family: cursive;
+            font-size: 18px;
+
+            background-color: whitesmoke;
+
+            padding: 0.3rem;
+
+            width: 15rem;
+            height: 67%;
+            border-radius: 5px;
+        }
+    }
 }
+
