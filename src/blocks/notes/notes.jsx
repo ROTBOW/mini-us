@@ -43,8 +43,8 @@ const Notes = () => {
         let count = getNoteCount()
         localStorage.setItem(`notes-${count}`, writerText);
         setMode(() => {
-            setCurrNote(`notes-${count}`);
             setNotes(grabNotes());
+            setCurrNote(`notes-${count}`);
             setWriterText('');
             return 'reader'
         })
