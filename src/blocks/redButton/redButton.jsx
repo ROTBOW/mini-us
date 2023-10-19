@@ -6,6 +6,7 @@ const RedButton = () => {
 
     const [countDown, setCountDown] = useState(10);
     const [counting, setCounting] = useState(false);
+    const [countClass, setCountClass] = useState('');
 
     const countRef = useRef(countDown);
     countRef.current = countDown;
@@ -30,6 +31,7 @@ const RedButton = () => {
                 } else {
                     e.target.classList.add('redbutton-poof')
                     setCountDown('Silly Goose');
+                    setCountClass('redButton-blaring');
                 }
             }, 1000);
         }
@@ -45,7 +47,7 @@ const RedButton = () => {
                 <button onClick={handleClick}></button>
             </div>
             
-            <div className="redbutton-counter">{countDown}</div>
+            <div className={`redbutton-counter ${countClass}`}>{countDown}</div>
         </div>
     )
 
